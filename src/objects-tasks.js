@@ -129,7 +129,7 @@ function makeWord(lettersObject) {
       result[item] = key;
     });
   });
-  return result.join('');git 
+  return result.join('');
 }
 
 /**
