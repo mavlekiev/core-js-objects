@@ -18,8 +18,8 @@
  *    shallowCopy({}) => {}
  */
 function shallowCopy(obj) {
-  let objCopy = {};
-  return  objCopy = Object.assign({}, ...obj);
+  const objCopy = {};
+  return Object.assign(objCopy, obj);
 }
 
 /**
@@ -34,8 +34,12 @@ function shallowCopy(obj) {
  *    mergeObjects([]) => {}
  */
 function mergeObjects(objects) {
-  if (objects.length === 0) return {};
-  return Object.assign({}, ...objects);
+  return objects.reduce((result, obj) => {
+    return Object.entries(obj).reduce((acc, [key, value]) => {
+      acc[key] = (acc[key] || 0) + value;
+      return acc;
+    }, result);
+  }, {});
 }
 
 /**
